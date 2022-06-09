@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--George Thompson-->
+<html lang="en">
+    <style>
+        table, th, td {
+            border:1px solid black;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Driven Programming - Buttons</title>
+</head>
+<body style="background-color: lightblue;">
+    
+     <H1><img src="UATspaceLogo.jpg"></H1>
+
+     <table style="width:50%;">
+        <caption><b>UAT Space Program</b></caption>
+        <tr>
+          <th>Data Type</th>
+          <th>Reading</th>
+        </tr>
+        <tr>
+            <td>Time Elapsed:</td>
+            <td id="time"> 0 seconds</td>
+        </tr>
+        <tr>
+            <td>Latitude</td>
+            <td id="longitude">0</td>
+        </tr>
+        <tr>
+            <td>Longitude</td>
+            <td id="latitude">0</td>
+        </tr>
+        <tr>
+            <td>GPS Altitude</td>
+            <td id="GPS">0</td>
+        </tr>
+        <tr>
+            <td>BMP Sensor Altitude</td>
+            <td id="BMPAlt">0</td>
+        </tr>
+        <tr>
+            <td>BMP Sensor Pressure</td>
+            <td id="BMPPres">0</td>
+        </tr>
+        <tr>
+            <td>BMP Sensor Temprature</td>
+            <td id="BMPTemp">0</td>
+        </tr>
+        <tr>
+            <td>Digital Sensor Temprature</td>
+            <td id="DigiTemp">0</td>
+        </tr>
+        <tr>
+            <td>CSS Sensor Temprature</td>
+            <td id="CSSTemp">0</td>
+        </tr>
+        <tr>
+            <td>CSS Sensor eCO2:</td>
+            <td id="CSSCO2">0</td>
+        </tr>
+        <tr>
+            <td>CSS Sensor TVOC:</td>
+            <td id="CSSTVOC">0</td>
+        </tr>
+        <tr>
+            <td>UV:</td>
+            <td id="UV">0</td>
+        </tr>
+        <tr>
+            <td>Accel X:</td>
+            <td id="Accelx">0</td>
+        </tr>
+        <tr>
+            <td>Accel Y:</td>
+            <td id="Accely">0</td>
+        </tr>
+        <tr>
+            <td>Accel Z:</td>
+            <td id="Accelz">0</td>
+        </tr>
+        <tr>
+            <td>Magnetic X:</td>
+            <td id="Magx">0</td>
+        </tr>
+        <tr>
+            <td>Magnetic Y:</td>
+            <td id="Magy">0</td>
+        </tr>
+        <tr>
+            <td>Magnetic Z:</td>
+            <td id="Magz">0</td>
+        </tr>
+        <tr>
+            <td>Gyro X:</td>
+            <td id="Gyrox">0</td>
+        </tr>
+        <tr>
+            <td>Gyro Y:</td>
+            <td id="Gyroy">0</td>
+        </tr>
+        <tr>
+            <td>Gyro Z:</td>
+            <td id="Gyroz">0</td>
+        </tr>
+
+     </table>
+     <br>
+
+     <button onClick="start()" style="border-radius: 12px; background-color: white; font-size: 15px; padding: 10px 24px;">Start Timer</button> <!--creates the start Button-->
+     <button onClick="clearInterval(myTimer)" style="border-radius: 12px; background-color: white; font-size: 15px; padding: 10px 24px;">Stop Timer</button> <!--Creates the stop button-->
+     <button onClick="reset()" style="border-radius: 12px; background-color: white; font-size: 15px; padding: 10px 24px;">Reset Timer</button> <!--Creates the reset button-->
+
+    
+
+    <script>
+     /*
+     George Thompson
+     6/9/22
+     Assignment: Assignment: Javascript DOM and Document Structure with Tables, Themes, and Mock Data
+     */
+
+    var data = ["33.37775", "-111.97596", "0", "30383.04", "2.34", "0", "24.12", "25", "400", "0", "0", "-0.87", "-0.02", "9.61", "0.13", "0.57", "-0.24", "4.66", "0.01", "-0.4"]
+    var timeElapsed = 0; // sets timeElapsed variable to 0
+function start(){
+    myTimer = setInterval(myCounter, 1000) // sets the my timer function to run the my counter function every second
+    document.getElementById("longitude").innerHTML = data[0]; // writes the data from the data array to the html file
+    document.getElementById("latitude").innerHTML = data[1];
+    document.getElementById("GPS").innerHTML = data[2];
+    document.getElementById("BMPAlt").innerHTML = data[3];
+    document.getElementById("BMPPres").innerHTML = data[4];
+    document.getElementById("BMPTemp").innerHTML = data[5];
+    document.getElementById("DigiTemp").innerHTML = data[6];
+    document.getElementById("CSSTemp").innerHTML = data[7];
+    document.getElementById("CSSCO2").innerHTML = data[8];
+    document.getElementById("CSSTVOC").innerHTML = data[9];
+    document.getElementById("UV").innerHTML = data[10];
+    document.getElementById("Accelx").innerHTML = data[11];
+    document.getElementById("Accely").innerHTML = data[12];
+    document.getElementById("Accelz").innerHTML = data[13];
+    document.getElementById("Magx").innerHTML = data[14];
+    document.getElementById("Magy").innerHTML = data[15];
+    document.getElementById("Magz").innerHTML = data[16];
+    document.getElementById("Gyrox").innerHTML = data[17];
+    document.getElementById("Gyroy").innerHTML = data[18];
+    document.getElementById("Gyroz").innerHTML = data[19];
+
+
+}
+     function myCounter() {
+         document.getElementById("time").innerHTML = ++timeElapsed + " seconds"; //increments timeElapsed variable and posts to html File
+        
+     }
+     function reset(){ //creates the reset function
+         clearInterval(myTimer) //stops the timer
+         timeElapsed = 0; // resets timeElapsed back to 0
+          document.getElementById("time").innerHTML = 0 + " seconds"; // writes the timer to the html file
+          document.getElementById("longitude").innerHTML = 0; // restes all the data to 0
+          document.getElementById("latitude").innerHTML = 0;
+          document.getElementById("GPS").innerHTML = 0;
+          document.getElementById("BMPAlt").innerHTML = 0;
+          document.getElementById("BMPPres").innerHTML = 0;
+          document.getElementById("BMPTemp").innerHTML = 0;
+          document.getElementById("DigiTemp").innerHTML = 0;
+          document.getElementById("CSSTemp").innerHTML = 0;
+          document.getElementById("CSSCO2").innerHTML = 0;
+          document.getElementById("CSSTVOC").innerHTML = 0;
+          document.getElementById("UV").innerHTML = 0;
+          document.getElementById("Accelx").innerHTML = 0;
+          document.getElementById("Accely").innerHTML = 0;
+          document.getElementById("Accelz").innerHTML = 0;
+          document.getElementById("Magx").innerHTML = 0;
+          document.getElementById("Magy").innerHTML = 0;
+          document.getElementById("Magz").innerHTML = 0;
+          document.getElementById("Gyrox").innerHTML = 0;
+          document.getElementById("Gyroy").innerHTML = 0;
+          document.getElementById("Gyroz").innerHTML = 0;
+     }
+      
+
+    </script>
+
+    
+</body>
+</html>
